@@ -1,0 +1,7 @@
+﻿"REPORTE DE GASTOS OPERATIVOS"
+"Del 2026-01-01 al 2026-01-14"
+
+Fecha,Descripción,Categoría,"Método Pago",Referencia,Usuario,Monto
+"14/01/2026 21:42","Alquiler de impresora",Alquiler,EFECTIVO,253453gdsfg,"Alfredo Cano",50.00
+
+"TOTAL PERIODO",,,,,,50
