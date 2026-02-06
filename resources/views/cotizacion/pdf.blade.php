@@ -409,6 +409,16 @@
             </div>
         </div>
 
+        <div class="row" style="margin-top: 10px; border-top: 1px solid #ddd; padding-top: 5px;">
+            <div style="width: 100%;">
+                @php
+                    $totalParaLetras = isset($cotizacione->total_proforma) ? $cotizacione->total_proforma : $cotizacione->total;
+                    $letras = \App\Utils\NumeroALetras::convertir($totalParaLetras);
+                @endphp
+                <strong>TOTAL EN LETRAS:</strong> {{ $letras }}
+            </div>
+        </div>
+
     </div>
     
     {{-- Script para número de página con CSS counter si fuera compatible, 

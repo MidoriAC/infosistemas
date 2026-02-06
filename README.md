@@ -1,5 +1,5 @@
 ------------
-![Img](https://github.com/SakNoelCode/Imagenes_Proyectos/blob/master/sistemaAbarrotePanel.png)
+
 
 # Punto de Venta para una tienda
 
@@ -66,5 +66,3 @@ php artisan serve
 - Este proyecto está licenciado bajo la Licencia MIT. Para más información, consulta el archivo [LICENSE](LICENSE).
 - Obtenga más información sobre esta licencia  [MIT license](https://opensource.org/licenses/MIT).
 
-------------
-![Img](https://github.com/SakNoelCode/Imagenes_Proyectos/blob/master/sistemaAbarrotecategory.png)

@@ -202,7 +202,7 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="#" onclick="prepareProforma(event, {{ $cotizacion->id }})">
-                                                <i class="fas fa-print"></i> Imprimir Proforma
+                                                <i class="fas fa-print"></i> Imprimir Proforma 2
                                             </a>
                                         </li>
                                         @endcan

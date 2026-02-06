@@ -253,7 +253,7 @@
                         <div class="col-md-3">
                             <a href="#" onclick="prepareProforma(event, {{ $cotizacione->id }})" 
                                class="btn btn-dark w-100">
-                                <i class="fas fa-print"></i> Imprimir Proforma
+                                <i class="fas fa-print"></i> Imprimir Proforma 2
                             </a>
                         </div>
                         {{-- @endcan --}}
