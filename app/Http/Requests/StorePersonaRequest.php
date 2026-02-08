@@ -15,14 +15,14 @@ class StorePersonaRequest extends FormRequest
     {
         return [
             'tipo_persona' => 'required',
-            'razon_social' => 'required|max:120',
-            'direccion' => 'required|max:120',
+            'razon_social' => 'required|max:255',
+            'direccion' => 'required|max:255',
             'nit' => 'required|max:20',
             'documento_id' => 'nullable|exists:documentos,id',
             'numero_documento' => 'nullable|max:20',
             'email' => 'nullable|email|max:100',
             'telefono' => 'nullable|max:20',
-            'nombre_comercial' => 'nullable|max:100',
+            'nombre_comercial' => 'nullable|max:255',
         ];
     }
 

@@ -45,15 +45,22 @@ class clienteController extends Controller
     {
         try {
             DB::beginTransaction();
+
+            \Log::info('Inicio store cliente', ['request' => $request->all()]);
+
             $persona = Persona::create($request->validated());
             $persona->cliente()->create([
                 'persona_id' => $persona->id
             ]);
+            
+            \Log::info('Cliente creado exitosamente', ['cliente_id' => $persona->cliente->id]);
+            
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
             \Log::error('Error en store CLIENTE: ' . $e->getMessage());
-
+            \Log::error($e);
+            return redirect()->back()->with('error', 'Error al crear cliente: ' . $e->getMessage())->withInput();
         }
 
         return redirect()->route('clientes.index')->with('success', 'Cliente registrado');
@@ -85,12 +92,20 @@ class clienteController extends Controller
         try {
             DB::beginTransaction();
 
+             \Log::info('Inicio update cliente', ['cliente_id' => $cliente->id, 'request' => $request->all()]);
+
+
             Persona::where('id', $cliente->persona->id)
                 ->update($request->validated());
+            
+            \Log::info('Cliente actualizado exitosamente');
 
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
+             \Log::error('Error en update CLIENTE: ' . $e->getMessage());
+             \Log::error($e);
+             return redirect()->back()->with('error', 'Error al actualizar cliente: ' . $e->getMessage())->withInput();
         }
 
         return redirect()->route('clientes.index')->with('success', 'Cliente editado');

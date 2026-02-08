@@ -18,8 +18,8 @@ class UpdateClienteRequest extends FormRequest
         $personaId = $cliente->persona->id;
 
         return [
-            'razon_social' => 'required|max:120',
-            'direccion' => 'required|max:120',
+            'razon_social' => 'required|max:255',
+            'direccion' => 'required|max:255',
             'nit' => [
                 'required',
                 'max:20'
@@ -28,7 +28,7 @@ class UpdateClienteRequest extends FormRequest
             'numero_documento' => 'nullable|max:20',
             'email' => 'nullable|email|max:100',
             'telefono' => 'nullable|max:20',
-            'nombre_comercial' => 'nullable|max:100',
+            'nombre_comercial' => 'nullable|max:255',
         ];
     }
 
