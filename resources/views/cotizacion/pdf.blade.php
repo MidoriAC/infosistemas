@@ -223,7 +223,6 @@
                         @if($configProforma->telefono) Tel: {{ $configProforma->telefono }} @endif
                         @if($configProforma->email) | {{ $configProforma->email }} @endif
                     </p>
-                    <p>Brayan Yonathán Quezada Salazar</p>
 
                     @if($configProforma->nit)
                     <p><strong>NIT:</strong> {{ $configProforma->nit }}</p>
