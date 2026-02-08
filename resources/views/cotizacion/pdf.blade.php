@@ -97,10 +97,10 @@
             font-weight: bold;
             color: #667eea;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin: 0 auto 10px auto;
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 5px;
-            display: inline-block;
+            display: table;
         }
         .label {
             font-weight: bold;
@@ -245,7 +245,7 @@
                 </div>
                 <div class="doc-number">{{$cotizacione->numero_cotizacion}}</div>
                 <div class="doc-meta">
-                    Fecha: {{$cotizacione->fecha_hora->format('d/m/Y')}}<br>
+                    Fecha: {{ isset($fechaImpresion) ? \Carbon\Carbon::parse($fechaImpresion)->format('d/m/Y') : $cotizacione->fecha_hora->format('d/m/Y') }}<br>
                     {{-- //! Hora: {{$cotizacione->fecha_hora->format('H:i')}} --}}
                 </div>
                 
@@ -256,7 +256,7 @@
                 <div style="margin-top: 5px;">
                     <span class="badge {{$statusClass}}">
                         {{$cotizacione->obtenerEstadoTexto()}}
-                    </span>
+                    </span>v 
                 </div>
                 --}}
             </div>
@@ -279,17 +279,18 @@
 
     <div class="container">
 
-        @if($cotizacione->estado === 'CANCELADA')
+        <!-- @if($cotizacione->estado === 'CANCELADA')
         <div class="watermark">CANCELADA</div>
         @elseif($cotizacione->estado === 'VENCIDA')
         <div class="watermark">VENCIDA</div>
         @elseif($cotizacione->estado === 'CONVERTIDA')
         <div class="watermark">CONVERTIDA</div>
-        @endif
+        @endif -->
 
         <div class="client-section">
             <div class="section-title">Información del Cliente</div>
-            <div class="row">
+            <div style="clear: both;"></div>
+            <div class="row" style="text-align: left;">
                 <div class="col-left" style="width: 100%;"> {{-- //! Adjusted width --}}
                      <div class="detail-row">
                         <span class="label">Cliente:</span>
@@ -346,13 +347,13 @@
                     {{-- //! <td class="product-code">{{$producto->codigo}}</td> --}}
                     <td>
                         <strong>{{$producto->nombre}}</strong>
-                        @if($producto->marca || $producto->presentacione)
-                        <br>
-                        <span style="font-size: 8px; color: #777;">
-                            {{$producto->marca->caracteristica->nombre ?? ''}}
-                            {{$producto->presentacione->caracteristica->nombre ?? ''}}
-                        </span>
-                        @endif
+                        <!-- @if($producto->marca || $producto->presentacione) -->
+                        <!-- <br> -->
+                        <!-- <span style="font-size: 8px; color: #777;"> -->
+                            <!-- {{$producto->marca->caracteristica->nombre ?? ''}} -->
+                            <!-- {{$producto->presentacione->caracteristica->nombre ?? ''}} -->
+                        <!-- </span> -->
+                        <!-- @endif -->
                     </td>
                     <td style="text-align: center;">{{$producto->pivot->cantidad}}</td>
                     {{-- //! <td>{{$producto->unidadMedida->abreviatura ?? 'Unid'}}</td> --}}

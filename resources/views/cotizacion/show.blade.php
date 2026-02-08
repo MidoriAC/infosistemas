@@ -241,11 +241,16 @@
                                 <i class="fas fa-arrow-left"></i> Volver al Listado
                             </a>
                         </div>
+                        
+                        <div class="col-md-12 my-2">
+                            <label for="fechaImpresionInput" class="form-label fw-bold small">Fecha de Emisión (Solo para impresión):</label>
+                            <input type="date" id="fechaImpresionInput" class="form-control" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                        </div>
 
                         {{-- @can('ver-cotizacion') --}}
                         <div class="col-md-3">
-                            <a href="{{ route('cotizaciones.pdf', $cotizacione->id) }}"
-                               class="btn btn-danger w-100" target="_blank">
+                            <a href="#" onclick="imprimirPdfConFecha(event, {{ $cotizacione->id }})" 
+                               class="btn btn-danger w-100">
                                 <i class="fas fa-file-pdf"></i> Generar PDF
                             </a>
                         </div>
@@ -312,6 +317,7 @@
         <div class="modal-content">
             <form id="formProforma" method="POST" target="_blank">
                 @csrf
+                <input type="hidden" name="fecha" id="hiddenFechaProforma">
                 <div class="modal-header">
                     <h5 class="modal-title" id="proformaModalLabel">Configurar Precios de Proforma</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -374,6 +380,9 @@
     function prepareProforma(e, id) {
         e.preventDefault();
         
+        let fecha = document.getElementById('fechaImpresionInput').value;
+        document.getElementById('hiddenFechaProforma').value = fecha;
+        
         // 1. Obtener detalles y configuración
         fetch(`/cotizaciones/${id}/details`)
             .then(response => response.json())
@@ -417,13 +426,19 @@
                     
                 } else {
                     // Ninguno
-                    window.open(`/cotizaciones/${id}/proforma`, '_blank');
+                    window.open(`/cotizaciones/${id}/proforma?fecha=${fecha}`, '_blank');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 Swal.fire('Error', 'No se pudo cargar la configuración de proforma', 'error');
             });
+    }
+    function imprimirPdfConFecha(e, id) {
+        e.preventDefault();
+        let fecha = document.getElementById('fechaImpresionInput').value;
+        let url = `/cotizaciones/${id}/pdf?fecha=${fecha}`;
+        window.open(url, '_blank');
     }
 </script>
 @endpush

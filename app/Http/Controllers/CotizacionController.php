@@ -346,7 +346,7 @@ class CotizacionController extends Controller
     /**
      * Generar PDF de la cotización
      */
-    public function generarPDF(Cotizacion $cotizacione)
+    public function generarPDF(Request $request, Cotizacion $cotizacione)
     {
         $cotizacione->load([
             'productos.marca.caracteristica',
@@ -357,7 +357,9 @@ class CotizacionController extends Controller
             'sucursal'
         ]);
 
-        $pdf = Pdf::loadView('cotizacion.pdf', compact('cotizacione'));
+        $fechaImpresion = $request->input('fecha');
+
+        $pdf = Pdf::loadView('cotizacion.pdf', compact('cotizacione', 'fechaImpresion'));
         $pdf->setPaper('letter');
 
         return $pdf->stream('cotizacion-' . $cotizacione->numero_cotizacion . '.pdf');
@@ -483,7 +485,9 @@ class CotizacionController extends Controller
             }
         }
 
-        $pdf = Pdf::loadView('cotizacion.pdf', compact('cotizacione', 'configProforma'));
+        $fechaImpresion = $request->input('fecha');
+
+        $pdf = Pdf::loadView('cotizacion.pdf', compact('cotizacione', 'configProforma', 'fechaImpresion'));
         $pdf->setPaper('letter');
 
         return $pdf->stream('proforma-' . $cotizacione->numero_cotizacion . '.pdf');
