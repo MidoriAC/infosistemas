@@ -262,6 +262,15 @@
                 <span class="total-label">TOTAL:</span>
                 <span class="total-value">Q {{ number_format($venta->total, 2) }}</span>
             </div>
+            
+            <div class="total-row" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
+                <div style="text-align: right; font-size: 9px; font-style: italic; color: #555;">
+                    @php
+                        $letras = \App\Utils\NumeroALetras::convertir($venta->total);
+                    @endphp
+                    SON: {{ $letras }}
+                </div>
+            </div>
         </div>
 
         <div style="clear: both;"></div>

@@ -15,8 +15,8 @@ class StorePersonaRequest extends FormRequest
     {
         return [
             'tipo_persona' => 'required',
-            'razon_social' => 'required|max:80',
-            'direccion' => 'required|max:80',
+            'razon_social' => 'required|max:120',
+            'direccion' => 'required|max:120',
             'nit' => 'required|max:20',
             'documento_id' => 'nullable|exists:documentos,id',
             'numero_documento' => 'nullable|max:20',

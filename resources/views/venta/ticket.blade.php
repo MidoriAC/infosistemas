@@ -162,6 +162,12 @@
             <span>TOTAL:</span>
             <span>Q {{ number_format($venta->total, 2) }}</span>
         </div>
+        <div style="margin-top: 8px; font-size: 10px; font-style: italic;">
+            @php
+                $letras = \App\Utils\NumeroALetras::convertir($venta->total);
+            @endphp
+            {{ $letras }}
+        </div>
     </div>
 
     @if($venta->tipo_factura === 'FACT' && $venta->numero_autorizacion_fel)

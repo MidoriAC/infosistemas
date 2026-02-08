@@ -23,8 +23,8 @@ class UpdateProveedoreRequest extends FormRequest
     {
         $proveedore = $this->route('proveedore');
         return [
-            'razon_social' => 'required|max:80',
-            'direccion' => 'required|max:80',
+            'razon_social' => 'required|max:120',
+            'direccion' => 'required|max:120',
             'documento_id' => 'nullable|integer|exists:documentos,id',
             'numero_documento' => 'nullable|max:20|unique:personas,numero_documento,'.$proveedore->persona->id
         ];

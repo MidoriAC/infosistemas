@@ -18,8 +18,8 @@ class UpdateClienteRequest extends FormRequest
         $personaId = $cliente->persona->id;
 
         return [
-            'razon_social' => 'required|max:80',
-            'direccion' => 'required|max:80',
+            'razon_social' => 'required|max:120',
+            'direccion' => 'required|max:120',
             'nit' => [
                 'required',
                 'max:20'

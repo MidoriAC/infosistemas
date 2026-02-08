@@ -260,6 +260,14 @@
                 <div class="totales-label" style="font-size: 16px;">TOTAL:</div>
                 <div class="totales-value" style="font-size: 18px;">Q {{ number_format($venta->total, 2) }}</div>
             </div>
+             <div class="totales-row" style="margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 5px;">
+                <div style="text-align: right; width: 100%; font-size: 10px; font-style: italic;">
+                    @php
+                        $letras = \App\Utils\NumeroALetras::convertir($venta->total);
+                    @endphp
+                    SON: {{ $letras }}
+                </div>
+            </div>
         </div>
 
         @if($venta->anulacionFel)
