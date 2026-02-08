@@ -417,7 +417,7 @@ let subtotal = [];
 let sumas = {{ isset($cotizacione) ? $cotizacione->subtotal : 0 }};
 let iva = {{ isset($cotizacione) ? $cotizacione->impuesto : 0 }};
 let total = {{ isset($cotizacione) ? $cotizacione->total : 0 }};
-const impuesto = 12;
+const impuesto = 0;
 
 @if(isset($cotizacione))
     @foreach($cotizacione->productos as $index => $producto)

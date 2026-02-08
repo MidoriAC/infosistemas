@@ -364,7 +364,7 @@ let subtotal = [];
 let sumas = {{$cotizacione->subtotal}};
 let igv = {{$cotizacione->impuesto}};
 let total = {{$cotizacione->total}};
-const impuesto = 12;
+const impuesto = 0;
 
 @foreach($cotizacione->productos as $index => $producto)
     subtotal[{{$index}}] = {{$producto->pivot->subtotal}};

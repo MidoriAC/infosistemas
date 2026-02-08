@@ -155,6 +155,11 @@
 
             $('#box-razon-social').show();
         });
+
+        // Trigger change event if value is already selected (e.g. after validation error)
+        if ($('#tipo_persona').val()) {
+            $('#tipo_persona').trigger('change');
+        }
     });
 </script>
 @endpush
