@@ -246,9 +246,10 @@
                 <div class="doc-number">{{$cotizacione->numero_cotizacion}}</div>
                 <div class="doc-meta">
                     Fecha: {{$cotizacione->fecha_hora->format('d/m/Y')}}<br>
-                    Hora: {{$cotizacione->fecha_hora->format('H:i')}}
+                    {{-- //! Hora: {{$cotizacione->fecha_hora->format('H:i')}} --}}
                 </div>
                 
+                {{-- //!
                 @php
                     $statusClass = 'status-' . strtolower($cotizacione->estado);
                 @endphp
@@ -257,6 +258,7 @@
                         {{$cotizacione->obtenerEstadoTexto()}}
                     </span>
                 </div>
+                --}}
             </div>
         </div>
     </header>
@@ -288,7 +290,7 @@
         <div class="client-section">
             <div class="section-title">Información del Cliente</div>
             <div class="row">
-                <div class="col-left">
+                <div class="col-left" style="width: 100%;"> {{-- //! Adjusted width --}}
                      <div class="detail-row">
                         <span class="label">Cliente:</span>
                         <span class="value">{{$cotizacione->cliente->persona->razon_social}}</span>
@@ -302,6 +304,7 @@
                         <span class="value">{{ Str::limit($cotizacione->cliente->persona->direccion, 50) }}</span>
                     </div>
                 </div>
+                {{-- //!
                 <div class="col-right">
                     <div class="detail-row">
                          <span class="label">Teléfono:</span>
@@ -312,6 +315,7 @@
                         <span class="value">{{$cotizacione->user->name}}</span>
                     </div>
                 </div>
+                --}}
             </div>
         </div>
 
@@ -322,15 +326,15 @@
         <table class="products-table">
             <thead>
                 <tr>
-                    <th style="width: 10%;">Código</th>
-                    <th style="width: 45%;">Descripción</th>
+                    {{-- //! <th style="width: 10%;">Código</th> --}}
+                    <th style="width: 65%;">Descripción</th> {{-- //! Expanded width (was 45%) --}}
                     <th style="width: 10%; text-align: center;">Cant.</th>
-                    <th style="width: 10%;">Medida</th>
+                    {{-- //! <th style="width: 10%;">Medida</th> --}}
                     
                     @if($hasProformaPrice)
-                        <th style="width: 12%; text-align: right; background-color: #28a745;">Precio</th>
+                        <th style="width: 12%; text-align: right; background-color: #28a745;">Precio Unit.</th>
                     @else
-                        <th style="width: 12%; text-align: right;">Precio</th>
+                        <th style="width: 12%; text-align: right;">Precio Unit.</th>
                     @endif
 
                     <th style="width: 13%; text-align: right;">Total</th>
@@ -339,7 +343,7 @@
             <tbody>
                 @foreach($cotizacione->productos as $producto)
                 <tr>
-                    <td class="product-code">{{$producto->codigo}}</td>
+                    {{-- //! <td class="product-code">{{$producto->codigo}}</td> --}}
                     <td>
                         <strong>{{$producto->nombre}}</strong>
                         @if($producto->marca || $producto->presentacione)
@@ -351,7 +355,7 @@
                         @endif
                     </td>
                     <td style="text-align: center;">{{$producto->pivot->cantidad}}</td>
-                    <td>{{$producto->unidadMedida->abreviatura ?? 'Unid'}}</td>
+                    {{-- //! <td>{{$producto->unidadMedida->abreviatura ?? 'Unid'}}</td> --}}
                     
                     @if($hasProformaPrice)
                          <td class="text-right font-bold" style="color: #28a745;">
