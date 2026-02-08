@@ -223,12 +223,16 @@
                         @if($configProforma->telefono) Tel: {{ $configProforma->telefono }} @endif
                         @if($configProforma->email) | {{ $configProforma->email }} @endif
                     </p>
+                    <p>Brayan Yonathán Quezada Salazar</p>
+
                     @if($configProforma->nit)
                     <p><strong>NIT:</strong> {{ $configProforma->nit }}</p>
                     @endif
                 @else
                     <h1>{{$cotizacione->sucursal->nombre}}</h1>
                     <p>{{$cotizacione->sucursal->direccion}}</p>
+                    <p>Brayan Yonathán Quezada Salazar</p>
+
                     <p>
                         @if($cotizacione->sucursal->telefono) Tel: {{$cotizacione->sucursal->telefono}} @endif
                         @if($cotizacione->sucursal->email) | {{$cotizacione->sucursal->email}} @endif
