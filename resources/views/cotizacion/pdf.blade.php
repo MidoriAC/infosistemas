@@ -293,11 +293,13 @@
         @endif -->
 
         <div class="client-section">
+            @if(!isset($configProforma))
             <div class="section-title">Información del Cliente</div>
             <div style="clear: both;"></div>
+            @endif
             <div class="row" style="text-align: left;">
                 <div class="col-left" style="width: 100%;"> {{-- //! Adjusted width --}}
-                     <div class="detail-row">
+                     <div class="detail-}row">
                         <span class="label">Cliente:</span>
                         <span class="value">{{$cotizacione->cliente->persona->razon_social}}</span>
                     </div>
