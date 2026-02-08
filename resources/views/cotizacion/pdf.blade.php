@@ -268,7 +268,7 @@
         </div>
     </header>
 
-    <footer>
+    <!-- <footer>
         <div style="float: left; width: 60%;">
             <p>
                 Este documento es una cotización y no constituye un comprobante de venta.<br>
@@ -280,7 +280,7 @@
         <div style="float: right; width: 30%; text-align: right;">
              Página <span class="page-number"></span>
         </div>
-    </footer>
+    </footer> -->
 
     <div class="container">
 
@@ -292,39 +292,46 @@
         <div class="watermark">CONVERTIDA</div>
         @endif -->
 
-        <div class="client-section">
-            @if(!isset($configProforma))
-            <div class="section-title">Información del Cliente</div>
-            <div style="clear: both;"></div>
+        <div class="client-section" style="{{ isset($configProforma) ? 'border: none; background: transparent; padding: 0; margin-bottom: 20px;' : '' }}">
+            @if(isset($configProforma))
+                {{-- LAYOUT PROFORMA: Tabla simple alineada a la izquierda --}}
+                <div style="margin-top: 10px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 70px; font-weight: bold; color: #555; vertical-align: top; padding: 2px 0;">Cliente:</td>
+                            <td style="color: #333; padding: 2px 0;">{{$cotizacione->cliente->persona->razon_social}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; color: #555; vertical-align: top; padding: 2px 0;">NIT/DPI:</td>
+                            <td style="color: #333; padding: 2px 0;">{{$cotizacione->cliente->persona->nit ?? 'CF'}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; color: #555; vertical-align: top; padding: 2px 0;">Dirección:</td>
+                            <td style="color: #333; padding: 2px 0;">{{ Str::limit($cotizacione->cliente->persona->direccion, 80) }}</td>
+                        </tr>
+                    </table>
+                </div>
+            @else
+                {{-- LAYOUT NORMAL: Estilo original con título --}}
+                <div class="section-title">Información del Cliente</div>
+                <div style="clear: both;"></div>
+                <div class="row" style="text-align: left;">
+                    <div class="col-left" style="width: 100%;">
+                         <div class="detail-row">
+                            <span class="label">Cliente:</span>
+                            <span class="value">{{$cotizacione->cliente->persona->razon_social}}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">NIT/DPI:</span> 
+                            <span class="value">{{$cotizacione->cliente->persona->nit ?? 'CF'}}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Dirección:</span>
+                            <span class="value">{{ Str::limit($cotizacione->cliente->persona->direccion, 50) }}</span>
+                        </div>
+                    </div>
+                </div>
             @endif
-            <div class="row" style="text-align: left;">
-                <div class="col-left" style="width: 100%;"> {{-- //! Adjusted width --}}
-                     <div class="detail-}row">
-                        <span class="label">Cliente:</span>
-                        <span class="value">{{$cotizacione->cliente->persona->razon_social}}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">NIT/DPI:</span>
-                        <span class="value">{{$cotizacione->cliente->persona->nit ?? 'CF'}}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Dirección:</span>
-                        <span class="value">{{ Str::limit($cotizacione->cliente->persona->direccion, 50) }}</span>
-                    </div>
-                </div>
-                {{-- //!
-                <div class="col-right">
-                    <div class="detail-row">
-                         <span class="label">Teléfono:</span>
-                        <span class="value">{{$cotizacione->cliente->persona->telefono ?? 'N/A'}}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="label">Vendedor:</span>
-                        <span class="value">{{$cotizacione->user->name}}</span>
-                    </div>
-                </div>
-                --}}
-            </div>
         </div>
 
         @php
