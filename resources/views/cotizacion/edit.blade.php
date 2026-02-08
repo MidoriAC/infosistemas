@@ -432,7 +432,7 @@ function agregarProducto() {
     subtotal[cont] = round((cantidad * precioVenta) - descuento);
     sumas += subtotal[cont];
     igv = round(sumas * (impuesto / 100));
-    total = round(sumas + igv);
+    total = round(sumas);
 
     let fila = '<tr id="fila' + cont + '">' +
         '<td class="text-center">' + (cont + 1) + '</td>' +
@@ -478,7 +478,7 @@ function agregarProducto() {
 function eliminarProducto(indice) {
     sumas -= round(subtotal[indice]);
     igv = round(sumas * (impuesto / 100));
-    total = round(sumas + igv);
+    total = round(sumas);
 
     $('#sumas').html(sumas.toFixed(2));
     $('#igv').html(igv.toFixed(2));
