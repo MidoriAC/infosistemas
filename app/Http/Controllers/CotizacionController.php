@@ -37,8 +37,10 @@ class CotizacionController extends Controller
     public function index()
     {
         // Actualizar cotizaciones vencidas automáticamente
-        Cotizacion::where('estado', 'PENDIENTE')
-            ->where('fecha_vencimiento', '<', now())
+        //  Cotizacion::where('estado', 'PENDIENTE')
+        //     ->where('fecha_vencimiento', '<', now())
+        //     ->update(['estado' => 'VENCIDA']);
+        Cotizacion::where('fecha_vencimiento', '<', now())
             ->update(['estado' => 'VENCIDA']);
 
         $cotizaciones = Cotizacion::with([
