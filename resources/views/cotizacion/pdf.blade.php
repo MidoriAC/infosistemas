@@ -246,9 +246,11 @@
                 <div class="doc-title">
                     {{ isset($configProforma) ? strtoupper($configProforma->titulo_documento) : 'COTIZACIÓN' }}
                 </div>
+                @if(!isset($configProforma))
                 <div class="doc-number">
-                    {{ isset($configProforma) ? str_replace('COT-', 'Cotiz-', $cotizacione->numero_cotizacion) : $cotizacione->numero_cotizacion }}
+                    {{ $cotizacione->numero_cotizacion }}
                 </div>
+                @endif
                 <div class="doc-meta">
                     Fecha: {{ isset($fechaImpresion) ? \Carbon\Carbon::parse($fechaImpresion)->format('d/m/Y') : $cotizacione->fecha_hora->format('d/m/Y') }}<br>
                     {{-- //! Hora: {{$cotizacione->fecha_hora->format('H:i')}} --}}
