@@ -173,7 +173,12 @@
                         <h1>{{ $venta->sucursal->nombre }}</h1>
                         <p>{{ $venta->sucursal->direccion }}</p>
                         <p>Brayan Yonathán Quezada Salazar</p>
-                        <p>Tel: {{ $venta->sucursal->telefono }} | Email: {{ $venta->sucursal->email }}</p>
+                        @if($venta->sucursal->telefono || $venta->sucursal->email)
+                        <p>
+                            @if($venta->sucursal->telefono) Tel: {{ $venta->sucursal->telefono }} @endif
+                            @if($venta->sucursal->email) | Email: {{ $venta->sucursal->email }} @endif
+                        </p>
+                        @endif
                         @if($venta->sucursal->configuracionFel)
                             <p><strong>NIT:</strong> {{ $venta->sucursal->configuracionFel->nit_emisor }}</p>
                         @endif
