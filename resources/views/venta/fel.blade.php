@@ -168,11 +168,16 @@
         <table class="header-table">
             <tr>
                 <td width="60%" class="company-info">
-                     <img src="{{ public_path('storage/logos/logo.jpeg') }}" style="height: 150px; margin-bottom: 10px;"> 
-                    <!--<h1>{{ $venta->sucursal->nombre }}</h1>-->
-                    <!--<p><strong>NIT:</strong> {{ $venta->sucursal->configuracionFel->nit_emisor ?? 'N/A' }}</p>-->
-                    <!--<p>{{ $venta->sucursal->direccion }}</p>-->
-                    <!--<p>Tel: {{ $venta->sucursal->telefono }} | Email: {{ $venta->sucursal->email }}</p>-->
+                     <img src="{{ public_path('storage/logos/logo.jpeg') }}" style="height: 100px; margin-bottom: 10px;"> 
+                    <div style="margin-top: 5px;">
+                        <h1>{{ $venta->sucursal->nombre }}</h1>
+                        <p>{{ $venta->sucursal->direccion }}</p>
+                        <p>Brayan Yonathán Quezada Salazar</p>
+                        <p>Tel: {{ $venta->sucursal->telefono }} | Email: {{ $venta->sucursal->email }}</p>
+                        @if($venta->sucursal->configuracionFel)
+                            <p><strong>NIT:</strong> {{ $venta->sucursal->configuracionFel->nit_emisor }}</p>
+                        @endif
+                    </div>
                 </td>
               
                 <td width="40%">
