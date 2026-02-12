@@ -234,24 +234,24 @@
         <table class="products-table">
             <thead>
                 <tr>
-                    <th width="10%" class="text-center" style="text-align: center;">CANT</th>
+                    <th width="10%" class="text-right" style="text-align: right;">CANT</th>
                     <th width="50%">DESCRIPCIÓN</th>
-                    <th width="20%" class="text-center" style="text-align: center;">PRECIO UNIT.</th>
-                    <th width="20%" class="text-center" style="text-align: center;">TOTAL</th>
+                    <th width="20%" class="text-right" style="text-align: right;">PRECIO UNIT.</th>
+                    <th width="20%" class="text-right" style="text-align: right;">TOTAL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($venta->productos as $producto)
                 <tr>
-                    <td class="text-center" style="text-align: center;">{{ $producto->pivot->cantidad }}</td>
+                    <td class="text-right" style="text-align: right;">{{ $producto->pivot->cantidad }}</td>
                     <td>
                         {{ $producto->nombre }}
                         @if($producto->pivot->descuento > 0)
                             <br><span style="font-size: 8px; color: #e67e22;">(Desc: Q {{ number_format($producto->pivot->descuento, 2) }})</span>
                         @endif
                     </td>
-                    <td class="text-right" style="text-align: center;">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
-                    <td class="text-right" style="text-align: center;">
+                    <td class="text-right" style="text-align: right;">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
+                    <td class="text-right" style="text-align: right;">
                         Q {{ number_format(($producto->pivot->cantidad * $producto->pivot->precio_venta) - $producto->pivot->descuento, 2) }}
                     </td>
                 </tr>
@@ -263,12 +263,12 @@
             <tr>
                 <td width="60%"></td>
                 <td width="20%" class="text-right" style="padding: 5px; font-weight: bold; border-bottom: 1px solid #eee;">Subtotal:</td>
-                <td width="20%" class="text-center" style="padding: 5px; border-bottom: 1px solid #eee;">Q {{ number_format($venta->total - $venta->impuesto, 2) }}</td>
+                <td width="20%" class="text-right" style="text-align: right; padding: 5px; border-bottom: 1px solid #eee;">Q {{ number_format($venta->total - $venta->impuesto, 2) }}</td>
             </tr>
             <tr>
                 <td width="60%"></td>
                 <td width="20%" class="text-right" style="padding: 5px; font-weight: bold; background-color: #2c3e50; color: white;">TOTAL:</td>
-                <td width="20%" class="text-center" style="padding: 5px; background-color: #2c3e50; color: white; font-weight: bold;">Q {{ number_format($venta->total, 2) }}</td>
+                <td width="20%" class="text-right" style="text-align: right; padding: 5px; background-color: #2c3e50; color: white; font-weight: bold;">Q {{ number_format($venta->total, 2) }}</td>
             </tr>
         </table>
 
