@@ -250,8 +250,8 @@
                             <br><span style="font-size: 8px; color: #e67e22;">(Desc: Q {{ number_format($producto->pivot->descuento, 2) }})</span>
                         @endif
                     </td>
-                    <td class="text-right">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
-                    <td class="text-right">
+                    <td class="text-right" style="text-align: center;">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
+                    <td class="text-right" style="text-align: center;">
                         Q {{ number_format(($producto->pivot->cantidad * $producto->pivot->precio_venta) - $producto->pivot->descuento, 2) }}
                     </td>
                 </tr>
@@ -259,27 +259,28 @@
             </tbody>
         </table>
 
-        <div class="totals-container">
-            <div class="total-row">
-                <span class="total-label">Subtotal:</span>
-                <span class="total-value">Q {{ number_format($venta->total - $venta->impuesto, 2) }}</span>
-            </div>
-            <!--<div class="total-row">-->
-            <!--    <span class="total-label">IVA (12%):</span>-->
-            <!--    <span class="total-value">Q {{ number_format($venta->impuesto, 2) }}</span>-->
-            <!--</div>-->
-            <div class="total-row final">
-                <span class="total-label">TOTAL:</span>
-                <span class="total-value">Q {{ number_format($venta->total, 2) }}</span>
-            </div>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 5px;">
+            <tr>
+                <td width="60%"></td>
+                <td width="20%" class="text-right" style="padding: 5px; font-weight: bold; border-bottom: 1px solid #eee;">Subtotal:</td>
+                <td width="20%" class="text-center" style="padding: 5px; border-bottom: 1px solid #eee;">Q {{ number_format($venta->total - $venta->impuesto, 2) }}</td>
+            </tr>
+            <tr>
+                <td width="60%"></td>
+                <td width="20%" class="text-right" style="padding: 5px; font-weight: bold; background-color: #2c3e50; color: white;">TOTAL:</td>
+                <td width="20%" class="text-center" style="padding: 5px; background-color: #2c3e50; color: white; font-weight: bold;">Q {{ number_format($venta->total, 2) }}</td>
+            </tr>
+        </table>
+
+        <!-- Totals Container removed, replaced by table above -->
+        <!-- <div class="totals-container"> ... </div> -->
             
-            <div class="total-row" style="margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
-                <div style="text-align: right; font-size: 9px; font-style: italic; color: #555;">
-                    @php
-                        $letras = \App\Utils\NumeroALetras::convertir($venta->total);
-                    @endphp
-                    SON: {{ $letras }}
-                </div>
+        <div style="width: 100%; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 5px;">
+            <div style="text-align: right; font-size: 9px; font-style: italic; color: #555;">
+                @php
+                    $letras = \App\Utils\NumeroALetras::convertir($venta->total);
+                @endphp
+                SON: {{ $letras }}
             </div>
         </div>
 
