@@ -234,24 +234,24 @@
         <table class="products-table">
             <thead>
                 <tr>
-                    <th width="10%" class="text-center">CANT</th>
+                    <th width="10%" class="text-center" style="text-align: center;">CANT</th>
                     <th width="50%">DESCRIPCIÓN</th>
-                    <th width="20%" class="text-right">PRECIO UNIT.</th>
-                    <th width="20%" class="text-right">TOTAL</th>
+                    <th width="20%" class="text-center" style="text-align: center;">PRECIO UNIT.</th>
+                    <th width="20%" class="text-center" style="text-align: center;">TOTAL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($venta->productos as $producto)
                 <tr>
-                    <td class="text-center">{{ $producto->pivot->cantidad }}</td>
+                    <td class="text-center" style="text-align: center;">{{ $producto->pivot->cantidad }}</td>
                     <td>
                         {{ $producto->nombre }}
                         @if($producto->pivot->descuento > 0)
                             <br><span style="font-size: 8px; color: #e67e22;">(Desc: Q {{ number_format($producto->pivot->descuento, 2) }})</span>
                         @endif
                     </td>
-                    <td class="text-right">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
-                    <td class="text-right">
+                    <td class="text-center" style="text-align: center;">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
+                    <td class="text-center" style="text-align: center;">
                         Q {{ number_format(($producto->pivot->cantidad * $producto->pivot->precio_venta) - $producto->pivot->descuento, 2) }}
                     </td>
                 </tr>
