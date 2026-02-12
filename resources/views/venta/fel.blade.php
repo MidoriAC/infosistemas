@@ -250,8 +250,8 @@
                             <br><span style="font-size: 8px; color: #e67e22;">(Desc: Q {{ number_format($producto->pivot->descuento, 2) }})</span>
                         @endif
                     </td>
-                    <td class="text-center" style="text-align: center;">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
-                    <td class="text-center" style="text-align: center;">
+                    <td class="text-right">Q {{ number_format($producto->pivot->precio_venta, 2) }}</td>
+                    <td class="text-right">
                         Q {{ number_format(($producto->pivot->cantidad * $producto->pivot->precio_venta) - $producto->pivot->descuento, 2) }}
                     </td>
                 </tr>
